@@ -87,7 +87,13 @@ io.on('connection', socket => {
     states[room].players[socket.id].time = d.getTime();
     sendGameState(room);
   })
-
+  socket.on('reset', (room) =>{
+    for(const [id,dat] of Object.entries(states[room].players)) {
+      states[room].players[id].buzzed = false;
+    }
+    socket.in(room).emit('reset');
+    sendGameState(room);
+  });
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
       socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
@@ -100,6 +106,7 @@ io.on('connection', socket => {
       }
       console.log(rooms)
       console.log(states)
+      sendGameState(room)    
     })
   })
 })

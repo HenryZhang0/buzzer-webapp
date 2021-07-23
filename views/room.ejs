@@ -55,9 +55,33 @@
       width: 80%;
       display: flex;
     }
-  
+    #player-name {
+      background-color: black;
+      
+    }
     #message-input {
       flex-grow: 1;
+    }
+    .send-button {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+    .send-button:hover {background-color: #3e8e41}
+
+    .send-button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
     }
   </style>
 </head>
@@ -71,7 +95,8 @@
 <div id="message-container"></div>
 <form id="send-container">
   <!--<input type="text" id="message-input">-->
-  <button type="submit" id="send-button">Buzz</button>
+<button type="submit" class="send-button">Buzz</button>
+<button type="reset" class="send-button">Reset</button>
 </form>
 </body>
 </html>
